@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/route_manager.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:get/get.dart';
 import 'screens/splash_screen.dart';
-
+import 'helpers/config.dart';
 import 'helpers/pref.dart';
+import 'firebase_options.dart';
 
 late Size mq;
 
@@ -13,6 +15,12 @@ Future<void> main() async {
   //enter full-screen
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  //initializing remote config
+  await Config.initConfig();
 
   await Pref.initializeHive();
 

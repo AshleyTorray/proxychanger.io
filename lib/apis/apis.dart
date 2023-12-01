@@ -13,9 +13,11 @@ import '../models/vpn.dart';
 class APIs {
   static Future<List<Vpn>> getVPNServers() async {
     final List<Vpn> vpnList = [];
-
+    
+    
     try {
       final res = await get(Uri.parse('http://www.vpngate.net/api/iphone/'));
+      
       final csvString = res.body.split("#")[1].replaceAll('*', '');
 
       List<List<dynamic>> list = const CsvToListConverter().convert(csvString);
