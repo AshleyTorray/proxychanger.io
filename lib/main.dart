@@ -15,12 +15,12 @@ Future<void> main() async {
   //enter full-screen
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
 
   //initializing remote config
-  await Config.initConfig();
+  // await Config.initConfig();
 
   await Pref.initializeHive();
 
