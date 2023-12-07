@@ -22,7 +22,7 @@ class HomeController extends GetxController {
     }
 
     if (vpnState.value == VpnEngine.vpnDisconnected) {
-      // log('\nBefore: ${vpn.value.openVPNConfigDataBase64}');
+      // print('\nBefore: ${vpn.value.openVPNConfigDataBase64}');
 
       final data = Base64Decoder().convert(vpn.value.openVPNConfigDataBase64);
       final config = Utf8Decoder().convert(data);
@@ -33,12 +33,7 @@ class HomeController extends GetxController {
           config: config);
 
       // log('\nAfter: $config');
-
-      //code to show interstitial ad and then connect to vpn
-      // AdHelper.showInterstitialAd(onComplete: () async {
-      //   await VpnEngine.startVpn(vpnConfig);
-      // });
-      VpnEngine.startVpn(vpnConfig);
+      await VpnEngine.startVpn(vpnConfig);
     } else {
       await VpnEngine.stopVpn();
     }

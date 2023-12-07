@@ -15,7 +15,7 @@ class LocationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (_controller.vpnList.isEmpty) _controller.getVpnData();
-
+    // _controller.getVpnData();
     // _adController.ad = AdHelper.loadNativeAd(adController: _adController);
 
     return Obx(

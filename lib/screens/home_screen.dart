@@ -34,14 +34,14 @@ class HomeScreen extends StatelessWidget {
         leading: Icon(CupertinoIcons.home),
         title: Text('PROXY CHANGER'),
         actions: [
-          IconButton(
-            onPressed: (){
-              Pref.isDarkMode = !Pref.isDarkMode;
-            }, 
-            icon: Icon(
-              Icons.brightness_medium,
-              size: 26,
-            )),
+          // IconButton(
+          //   onPressed: (){
+          //     Pref.isDarkMode = !Pref.isDarkMode;
+          //   }, 
+          //   icon: Icon(
+          //     Icons.brightness_medium,
+          //     size: 26,
+          //   )),
           IconButton(
             padding: EdgeInsets.only(right: 8),
             onPressed: () => Get.to(() => NetworkTestScreen()),

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
@@ -51,7 +53,11 @@ class _SplashScreenState extends State<SplashScreen> {
                 
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: Theme.of(context).lightText, letterSpacing: 1),
+                    // color: Theme.of(context).lightText, 
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 1),
               ))
         ],
       ),

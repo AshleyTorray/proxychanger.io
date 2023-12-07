@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'screens/splash_screen.dart';
 import 'helpers/config.dart';
@@ -48,7 +47,9 @@ class _MyAppState extends State<MyApp> {
       theme:
           ThemeData(appBarTheme: AppBarTheme(centerTitle: true, elevation: 3)),
 
-      themeMode: Pref.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      // themeMode: Pref.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      themeMode: ThemeMode.dark,
+
 
       //dark theme
       darkTheme: ThemeData(
@@ -61,6 +62,9 @@ class _MyAppState extends State<MyApp> {
 }
 
 extension AppTheme on ThemeData {
-  Color get lightText => Pref.isDarkMode ? Colors.white70 : Colors.black54;
-  Color get bottomNav => Pref.isDarkMode ? Colors.white12 : Colors.blue;
+  // Color get lightText => Pref.isDarkMode ? Colors.white70 : Colors.black54;
+  Color get lightText =>Colors.black54;
+  // Color get bottomNav => Pref.isDarkMode ? Colors.white12 : Colors.blue;
+  Color get bottomNav =>Colors.blue;
+
 }

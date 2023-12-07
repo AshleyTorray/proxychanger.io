@@ -9,6 +9,7 @@ import 'package:get/route_manager.dart';
 import '../helpers/my_dialog.dart';
 import 'home_screen.dart';
 import '../apis/apis.dart';
+import '../helpers/pref.dart';
 import 'dart:io' show Platform;
 
 class Login extends StatefulWidget {
@@ -255,7 +256,7 @@ class _LoginState extends State<Login> {
                         color: Color.fromARGB(255, 2, 204, 240),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: TextField(
                         onChanged: (text) {
                           if (RegExp(emailRegExp).hasMatch(text)) {
@@ -293,7 +294,7 @@ class _LoginState extends State<Login> {
                         ),
                         style: TextStyle(
                           color: isEmailValid ? Color(0xffFFFFFF) : Color(0xffFF5353),
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w500,
                           fontSize: buttonFont,
                           height: 1.8),
                       ),
@@ -380,7 +381,7 @@ class _LoginState extends State<Login> {
                                   // try {
                                   //   // response = await loginUser(
                                   //   //     userEmailController.text, passController.text);
-                                  //   response = await loginUser(passController.text);
+                                  //   response = await (passController.text);
                                   // } catch (e) {
                                   //   return MyDialogs.error(msg:"Service is unavaliable")
                                   //       .show(context);
@@ -408,10 +409,19 @@ class _LoginState extends State<Login> {
                                   //   );
                                   //   //user: userData
                                   // }
-                                  MyDialogs.success(msg: "Login success");
-                                  Get.off(()=> HomeScreen());
-                                  checkButtonConditions();
-                                  setState(() {});
+                                  var response = await APIs.loginUser(passController.text);
+                                  if(response == true)
+                                  {
+                                      MyDialogs.success(msg: "Login success");
+                                      Get.off(()=> HomeScreen());
+                                      checkButtonConditions();
+                                      setState(() {});
+                                  }
+                                  else{
+                                      return MyDialogs.error(msg:"NO USER")
+                                         .show(context);
+                                  }
+                                  
                                 },
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
